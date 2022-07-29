@@ -13,18 +13,24 @@ public class Interactable : MonoBehaviour
 
     private bool hasInteracted = false;
 
-    public Transform interaction;
+    public Transform interactionTransform;
 
     void Update()
     {
         if (isFocus && !hasInteracted)
         {
-            float distance = Vector3.Distance(player.position, interaction.position);
+            float distance = Vector3.Distance(player.position, interactionTransform.position);
             if (distance <= radius)
             {
                 hasInteracted = true;
+                Interact();
             }
         }
+    }
+
+    public virtual void Interact()
+    {
+        Debug.Log("Interact: " + gameObject.name);
     }
 
     public void OnFocused(Transform newPlayer)
@@ -43,8 +49,12 @@ public class Interactable : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        if (interactionTransform == null)
+        {
+            interactionTransform = transform;
+        }
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(interaction.position, radius);
+        Gizmos.DrawWireSphere(interactionTransform.position, radius);
     }
 
 }

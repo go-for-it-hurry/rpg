@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             focus = newFocus;
             playerMotor.FollowTarget(newFocus);
         }
-        focus = newFocus;
+        newFocus.OnFocused(transform);
     }
 
     void RemoveFocus()

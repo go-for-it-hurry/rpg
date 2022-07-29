@@ -10,6 +10,8 @@ public class PlayerMotor : MonoBehaviour
     private NavMeshAgent agent;
     private Transform target = null;
 
+    public float turnSpeed = 100f;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -33,7 +35,7 @@ public class PlayerMotor : MonoBehaviour
     {
         agent.stoppingDistance = newTarget.radius * newTarget.stoppingRatio;
         agent.updateRotation = false;
-        target = newTarget.interaction;
+        target = newTarget.interactionTransform;
     }
 
     public void StopFollowTarget()
@@ -47,6 +49,6 @@ public class PlayerMotor : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 }
