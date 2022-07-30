@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             focus.OnDefocused();
             focus = null;
-            playerMotor.StopFollowTarget();
         }
+        playerMotor.StopFollowTarget();
     }
 }
