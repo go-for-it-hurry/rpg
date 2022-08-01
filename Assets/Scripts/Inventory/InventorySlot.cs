@@ -30,4 +30,12 @@ public class InventorySlot : MonoBehaviour
         Debug.Log("OnClickRemoveButton");
         Inventory.instance.Remove(item);
     }
+
+    public void OnClickUseItem()
+    {
+        if (item != null)
+        {
+            item.Use();
+        }
+    }
 }
