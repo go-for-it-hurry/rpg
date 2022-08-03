@@ -10,11 +10,6 @@ public class Inventory : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-        {
-            Debug.LogWarning("already exist Inventory");
-            return;
-        }
         instance = this;
     }
 
