@@ -6,10 +6,14 @@ public enum EquipmentSlot
 {
     Head,
     Chest,
-    Leg,
+    Legs,
     Weapon,
     Shield,
-    Feet
+    Shoes,
+    Hair,
+    Body,
+    Pants,
+    Shirt
 }
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
@@ -18,6 +22,7 @@ public class Equipment : Item
     public EquipmentSlot equipmentSlot;
     public int armorModifier = 0;
     public int damageModifier = 0;
+    public SkinnedMeshRenderer meshRenderer = null;
 
     public override void Use()
     {
