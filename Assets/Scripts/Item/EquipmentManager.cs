@@ -42,11 +42,10 @@ public class EquipmentManager : MonoBehaviour
     public void Equip(Equipment newEquipment)
     {
         int slotIndex = (int)newEquipment.equipmentSlot;
-        ;
         Equipment oldEquipment = UnEquip(slotIndex, newEquipment);
-        if (oldEquipment == null && onEquipmentChanged != null)
+        if (onEquipmentChanged != null)
         {
-            onEquipmentChanged(newEquipment, oldEquipment);
+            onEquipmentChanged(newEquipment, null);
         }
         currentEquipments[slotIndex] = newEquipment;
 
@@ -71,8 +70,9 @@ public class EquipmentManager : MonoBehaviour
         }
         if (onEquipmentChanged != null)
         {
-            onEquipmentChanged(newEquipment, oldEquipment);
+            onEquipmentChanged(null, oldEquipment);
         }
+
         return oldEquipment;
     }
 
