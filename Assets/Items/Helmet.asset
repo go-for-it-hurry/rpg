@@ -18,5 +18,5 @@ MonoBehaviour:
   equipmentSlot: 0
   armorModifier: 3
   damageModifier: 2
-  meshRenderer: {fileID: 5850066541445911555, guid: e38c2fc9bebddcb49884fb80fb2cfe82,
+  meshRenderer: {fileID: 4647549803446641483, guid: e38c2fc9bebddcb49884fb80fb2cfe82,
     type: 3}
