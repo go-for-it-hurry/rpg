@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerAnimator : MonoBehaviour
+public class CharacterAnimator : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator animator;
@@ -19,7 +19,10 @@ public class PlayerAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
         combat = GetComponent<CharacterCombat>();
         combat.OnAttack += OnAttack;
-        animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        if (animatorOverrideController == null)
+        {
+            animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+        }
         animator.runtimeAnimatorController = animatorOverrideController;
     }
 
