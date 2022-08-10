@@ -19,7 +19,7 @@ public class HeathUI : MonoBehaviour
     {
         cameraTransform = Camera.main.transform;
         uiTransform = Instantiate(uiPrefab, uiParentTransform).transform;
-        uiParentTransform.gameObject.name = name;
+        uiTransform.gameObject.name = name;
         GetComponent<CharacterStats>().OnHealthChanged += OnHealthChanged;
         hpImage = uiTransform.GetChild(1).GetComponent<Image>();
     }
