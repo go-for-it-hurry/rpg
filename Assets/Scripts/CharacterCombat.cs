@@ -12,6 +12,7 @@ public class CharacterCombat : MonoBehaviour
     public bool InCombat { get; private set; }
     public float combatCoolingTime = 5f;
     private float lastAttackTime = .0f;
+    private CharacterStats enemyStats;
     void Start()
     {
         myStats = GetComponent<CharacterStats>();
@@ -34,18 +35,17 @@ public class CharacterCombat : MonoBehaviour
             {
                 OnAttack();
             }
-            StartCoroutine(DoDamage(enemyStats, .6f));
+            this.enemyStats = enemyStats;
             attackCountdown = 1f / attackRate;
             InCombat = true;
             lastAttackTime = Time.time;
         }
     }
-    IEnumerator DoDamage(CharacterStats stats, float delay)
+    public void AttackHitAnimationEvent()
     {
-        yield return new WaitForSeconds(delay);
-        stats.TakeDamage(myStats.damage.GetValue());
-        Debug.Log(transform.name + " attack and " + stats.gameObject.name + " takes " + myStats.damage.GetValue() + " damage");
-        if (stats.currentHealth <= 0)
+        this.enemyStats.TakeDamage(myStats.damage.GetValue());
+        Debug.Log(transform.name + " attack and " + this.enemyStats.gameObject.name + " takes " + myStats.damage.GetValue() + " damage");
+        if (this.enemyStats.currentHealth <= 0)
         {
             InCombat = false;
         }
